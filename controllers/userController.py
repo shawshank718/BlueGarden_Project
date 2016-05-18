@@ -1,9 +1,10 @@
 from flask import request, render_template, session, redirect, url_for, flash
-from models import *
+from models.user import *
+from models.crop import *
+from models.address import *
 
 
 class UserController:
-
     @staticmethod
     def login():
         errors = []
@@ -20,11 +21,12 @@ class UserController:
                 if user:
                     if not user.check_password(password):
                         errors.append("Email Id/Password do not match")
+                else:
+                    errors.append('User doesnt exist')
             if not errors:
-                session['logged_in'] = True
-                session['email'] = email
-                session['firstname'] = user.first_name
-                session['lastname'] = user.last_name
+                user.add_user_to_session()
+                if request.args.get('redirect'):
+                    return redirect(request.args.get('redirect'))
                 return redirect(url_for('dashboard'))
         return render_template("login.html", errors=errors)
 
@@ -36,6 +38,7 @@ class UserController:
             last_name = request.form.get('lastname', '')
             email = request.form.get('email', '')
             password = request.form.get('password', '')
+            conf_pswd = request.form.get('confirm password', '')
             if not first_name:
                 errors.append('First Name cannot be empty')
             if not last_name:
@@ -48,14 +51,17 @@ class UserController:
                     errors.append("Email Id already exists")
             if not password:
                 errors.append('Password cannot be empty')
+            if conf_pswd != password:
+                errors.append('Password mismatch! ')
             if not errors:
                 user = User(first_name, last_name, email, password)
                 db.session.add(user)
                 db.session.commit()
-                session['logged_in'] = True
-                session['email'] = user.email
-                session['firstname'] = user.first_name
-                session['lastname'] = user.last_name
+                user.add_user_to_session()
+                # session['logged_in'] = True
+                # session['email'] = user.email
+                # session['firstname'] = user.first_name
+                # session['lastname'] = user.last_name
                 return redirect(url_for('dashboard'))
         return render_template("register.html", errors=errors)
 
@@ -65,5 +71,21 @@ class UserController:
         session.pop('email', None)
         session.pop('firstname', None)
         session.pop('lastname', None)
-        flash('You successfully logged out', 'success')
+        flash('You are successfully logged out', 'success')
         return redirect(url_for('login'))
+
+    @staticmethod
+    def addcrop():
+        errors = []
+        if request.method == 'POST':
+            id = request.form.get('id', '')
+            crop_name = request.form.get('cropname', '')
+            grow_state = request.form.get('growstate', '')
+            farm_id = request.form.get('farmid', '')
+            crop = Crop(id, crop_name, grow_state, farm_id)
+            db.session.add(crop)
+            db.session.commit()
+            flash('You have added crop successfully')
+        return render_template("addcrop.html", errors=errors)
+
+

@@ -1,3 +1,4 @@
+
 {% extends "base.html" %}
 
 {% block title %}Login{% endblock %}
@@ -6,6 +7,7 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="ver-hor-align-parent grey darken-4">
     <div class="container ver-hor-align-child">
         <div class="row">
@@ -43,17 +45,45 @@
                 </div>
                 {% endif %}
                 {% endwith %}
-                <form class="login_form" action="" method="post">
-                    <input id="email" name="email" type="email" placeholder="Email Id" class="validate">
-                    <input id="password" name="password" type="password" placeholder="Password" class="validate">
+                <!--
+                <form class="contact_form" action="" method="post">
+                    <textarea id="enquiry" name="enquiry" type="text" placeholder="Enquiry" class="validate" rows="5" cols="40"></textarea>
+                    <br>
+                    <input id="email" name="email" type="email" placeholder="Email Address" class="validate">
                     <button class="btn waves-effect waves-light moderate-pink darken-1" type="submit" name="action">
-                        LOGIN
+                        SUBMIT
                     </button>
+                    
                 </form>
-                <p class="center-align">Don't have an account? <a href="/register">Register</a></p>
-            </div>
-        </div>
-    </div>
+                -->
+                <form class="form">
+  
+  <p class="name">
+   <label for="name">Name</label>
+      <input type="text" name="name" id="name" placeholder="John Doe" />
+
+  </p>
+  
+  <p class="email">
+   <label for="email">Email</label>
+      <input type="text" name="email" id="email" placeholder="mail@example.com" />
+
+  </p>
+  
+  <p class="web">
+    <label for="web">Subject</label>
+      <input type="text" name="web" id="web" placeholder="" />
+
+  </p>  
+ 
+  <p class="text">
+   <textarea name="text" placeholder="Write something to us"></textarea>
+  </p>
+  
+  <p class="submit">
+   <input type="submit" value="Send" />
+  </p>
+ </form>
 
 </div>
 {% endblock %}
