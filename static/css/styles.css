@@ -2,6 +2,65 @@ body, html {
     background-color: #EDEDED !important;
 }
 
+body {
+    font-size: 14px;
+    font-weight: 400;
+    background-color: #eeeeee;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+    padding: 10px 0;
+    font-weight: 700;
+    color: #87395D !important;
+}
+
+.strong {
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+h2 {
+    font-size: 3.5em;
+}
+
+h3 {
+    font-size: 2.75em;
+}
+
+h4 {
+    font-size: 2em;
+}
+
+h5 {
+    font-size: 1.5em;
+}
+
+h6,p {
+    padding: 0;
+    font-size: 1em;
+    font-weight: 400 !important;
+}
+
+.no-padding-top {
+    padding-top: 0 !important;
+}
+
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
+
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.no-padding-right {
+    padding-right: 0 !important;
+}
+
 @font-face {
     font-family: 'Aniron';
     font-weight: normal;
@@ -17,6 +76,64 @@ body, html {
     background-color: #87395d !important;
 }
 
+.checkbox-default[type="checkbox"].filled-in:checked + label:after{
+     border: 2px solid #87395d;
+     background-color: #87395d;
+}
+
+/* label underline focus color */
+.input-field input[type=text]:focus,
+.input-field input[type=number]:focus {
+    border-bottom: 1px solid #87395d;
+    box-shadow: 0 1px 0 0 #87395d;
+}
+
+/* label underline focus color */
+.white.input-field input[type=text]:focus,
+.white.input-field input[type=number]:focus {
+    border-bottom: 1px solid #ffffff;
+    box-shadow: 0 1px 0 0 #ffffff;
+}
+
+/*
+textarea.material-textarea:focus {
+    border-bottom: 1px solid #87395d !important;
+    box-shadow: 0 1px 0 0 #87395d !important;
+} */
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #87395d !important;
+    box-shadow: 0 1px 0 0 #87395d !important;
+}
+
+input[type=text]:focus,
+input[type=number]:focus {
+    border-bottom: 1px solid #87395d !important;
+    box-shadow: 0 1px 0 0 #87395d !important;
+}
+
+/* label focus color */
+.input-field input[type=text]:focus + label,
+.input-field input[type=number]:focus + label  {
+    color: #87395d;
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #87395d;
+}
+
+nav .button-collapse i {
+    font-size: 2rem;
+}
+
+nav ul li a {
+    color: #87395D !important;
+}
+
+i.right {
+    margin-left:0 !important;
+}
+
 .intro
 {
     position: relative;
@@ -28,8 +145,6 @@ body, html {
 
 .intro h1
 {
-    margin: 0 0 10px 0;
-    font-weight: 900;
     text-transform: uppercase;
 }
 
@@ -49,6 +164,16 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.ver-align-parent {
+    position: relative;
+}
+
+.ver-align-child {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
 }
 
 .login_container {
@@ -84,8 +209,19 @@ body, html {
     color: #AE2D02;
 }
 
-#not-found-container {
-    background-image: url('../images/thering.jpg');
-    background-size: cover;
-    background-position: center top;
+.pagination li a {
+  color: #87395d !important;
+}
+
+.pagination li.active a {
+  color: #fff !important;
+}
+
+.pagination li.disabled a {
+  cursor: default;
+  color: #999 !important;
+}
+
+.pagination li.active {
+  background-color: #87395d !important;
 }
